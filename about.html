@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>About Us - Government Services Portal</title>
+    
+    <!-- Font Awesome & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f0f7ff;
+            color: #1A2C3E;
+            line-height: 1.6;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        section { 
+            padding: 80px 0; 
+            overflow: hidden; 
+            position: relative;
+        }
+
+        /* Professional Government Color Palette */
+        :root {
+            --navy: #0B3B5E;
+            --teal: #1A6D7A;
+            --gold: #D4AF37;
+            --light-teal: #E8F4F0;
+            --white: #ffffff;
+            --dark-text: #1A2C3E;
+            --gray-text: #6B7A8A;
+        }
+
+        /* Background Classes - Alternating Pattern */
+        .bg-light-teal {
+            background: var(--light-teal);
+        }
+        .bg-white {
+            background: var(--white);
+        }
+        .bg-gradient {
+            background: linear-gradient(135deg, var(--navy), var(--teal));
+            color: white;
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            padding: 14px 35px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-align: center;
+            cursor: pointer;
+            border: 2px solid transparent;
+            letter-spacing: 0.5px;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 30px rgba(0,0,0,0.2);
+        }
+
+        .btn-primary {
+            background: var(--navy);
+            color: white;
+        }
+        .btn-primary:hover { background: var(--teal); }
+
+        .btn-secondary {
+            background: var(--gold);
+            color: var(--navy);
+        }
+        .btn-secondary:hover { background: #e8c44a; }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--navy);
+            color: var(--navy);
+        }
+        .btn-outline:hover { background: var(--navy); color: white; }
+
+        .btn-outline-light {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+        .btn-outline-light:hover { background: white; color: var(--navy); }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 20px;
+        }
+        .section-title span { color: var(--teal); }
+        .bg-gradient .section-title { color: white; }
+        .bg-gradient .section-title span { color: var(--gold); }
+
+        .section-desc {
+            font-size: 1.1rem;
+            color: var(--gray-text);
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+        .bg-gradient .section-desc { color: rgba(255,255,255,0.9); }
+
+        .text-center { text-align: center; }
+
+        /* ===== SECTION 1: HERO WITH IMPROVED STRUCTURE ===== */
+        .hero-section {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: linear-gradient(135deg, var(--navy), var(--teal));
+            color: white;
+        }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('GS21.webp');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.12;
+            z-index: 0;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 25px;
+            background: rgba(212,175,55,0.2);
+            border: 2px solid var(--gold);
+            border-radius: 50px;
+            margin-bottom: 30px;
+            font-weight: 600;
+            backdrop-filter: blur(5px);
+        }
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        .hero-title span { color: var(--gold); }
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+        .hero-stats {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 50px 0;
+        }
+        .hero-stat {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
+            padding: 20px 30px;
+            border-radius: 15px;
+            min-width: 150px;
+            transition: all 0.3s;
+        }
+        .hero-stat:hover { transform: translateY(-5px); background: rgba(212,175,55,0.2); border: 1px solid var(--gold); }
+        .hero-stat .number { font-size: 2.5rem; font-weight: 800; color: var(--gold); display: block; }
+        .hero-stat .label { font-size: 1rem; opacity: 0.9; }
+        .hero-buttons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+
+        /* ===== SECTION 2: MISSION (bg-white) ===== */
+        .mission-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 50px;
+            align-items: center;
+        }
+        .mission-image {
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .mission-image img { width: 100%; height: auto; transition: transform 0.5s; }
+        .mission-image:hover img { transform: scale(1.05); }
+        .mission-text h3 { font-size: 1.8rem; color: var(--navy); margin-bottom: 20px; }
+        .mission-text p { color: var(--gray-text); margin-bottom: 20px; line-height: 1.8; }
+
+        /* ===== SECTION 3: HISTORY TIMELINE (bg-light-teal) ===== */
+        .timeline-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--gold), var(--teal));
+            opacity: 0.3;
+        }
+        .timeline-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        .timeline-item:nth-child(odd) { flex-direction: row; }
+        .timeline-item:nth-child(even) { flex-direction: row-reverse; }
+        .timeline-content {
+            width: 45%;
+            background: var(--white);
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+        .timeline-content:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(11,59,94,0.15); border-left: 4px solid var(--gold); }
+        .timeline-year { font-size: 1.8rem; font-weight: 800; color: var(--gold); margin-bottom: 10px; }
+        .timeline-content h3 { font-size: 1.3rem; color: var(--navy); margin-bottom: 10px; }
+        .timeline-content p { color: var(--gray-text); }
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: var(--gold);
+            border-radius: 50%;
+            top: 20px;
+            border: 3px solid var(--white);
+            box-shadow: 0 0 0 3px var(--teal);
+        }
+
+        /* ===== SECTION 4: LEADERSHIP (bg-white) ===== */
+        .leadership-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+        .leader-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            text-align: center;
+            border: 1px solid #e0e8f0;
+        }
+        .leader-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(11,59,94,0.15); border-color: var(--gold); }
+        .leader-image { width: 100%; height: 280px; overflow: hidden; }
+        .leader-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
+        .leader-card:hover .leader-image img { transform: scale(1.1); }
+        .leader-info { padding: 20px; }
+        .leader-info h3 { font-size: 1.3rem; color: var(--navy); margin-bottom: 5px; }
+        .leader-info p { color: var(--teal); font-weight: 600; margin-bottom: 15px; }
+        .leader-social { display: flex; gap: 10px; justify-content: center; }
+        .leader-social a { width: 35px; height: 35px; background: var(--teal); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s; }
+        .leader-social a:hover { background: var(--gold); transform: scale(1.1); }
+
+        /* ===== SECTION 5: IMPACT STATS WITH IMAGES (bg-light-teal) ===== */
+        .impact-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+        .impact-stat-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid #e0e8f0;
+        }
+        .impact-stat-card:hover { transform: translateY(-10px); border-color: var(--gold); box-shadow: 0 20px 40px rgba(11,59,94,0.1); }
+        .impact-icon {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            overflow: hidden;
+            border: 3px solid var(--gold);
+        }
+        .impact-icon img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
+        .impact-stat-card:hover .impact-icon img { transform: scale(1.1); }
+        .impact-number { font-size: 2.5rem; font-weight: 800; color: var(--teal); margin-bottom: 10px; }
+        .impact-label { font-size: 1.1rem; font-weight: 600; color: var(--navy); margin-bottom: 5px; }
+        .impact-desc { font-size: 0.9rem; color: var(--gray-text); }
+
+        /* ===== SECTION 6: SERVICES WITH IMAGES (bg-white) ===== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+        .service-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid #e0e8f0;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.03);
+        }
+        .service-card:hover { transform: translateY(-10px); border-color: var(--gold); box-shadow: 0 20px 40px rgba(11,59,94,0.1); }
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            overflow: hidden;
+            border: 3px solid var(--gold);
+        }
+        .service-icon img { width: 100%; height: 100%; object-fit: cover; }
+        .service-card h3 { font-size: 1.4rem; color: var(--navy); margin-bottom: 15px; }
+        .service-card p { color: var(--gray-text); margin-bottom: 20px; }
+
+        /* ===== SECTION 7: TESTIMONIALS (bg-light-teal) ===== */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+        .testimonial-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid #e0e8f0;
+        }
+        .testimonial-card:hover { transform: translateY(-10px); border-color: var(--gold); }
+        .testimonial-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            overflow: hidden;
+            border: 3px solid var(--gold);
+        }
+        .testimonial-avatar img { width: 100%; height: 100%; object-fit: cover; }
+        .testimonial-rating { color: var(--gold); font-size: 1.1rem; margin-bottom: 15px; }
+        .testimonial-text { font-style: italic; color: var(--gray-text); margin-bottom: 15px; line-height: 1.6; }
+        .testimonial-name { font-weight: 700; color: var(--navy); }
+
+        /* ===== SECTION 8: AWARDS (bg-white) ===== */
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+        .award-card {
+            background: linear-gradient(135deg, var(--navy), var(--teal));
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            color: white;
+            transition: all 0.3s;
+        }
+        .award-card:hover { transform: translateY(-10px) scale(1.02); box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
+        .award-icon { font-size: 3rem; color: var(--gold); margin-bottom: 15px; }
+        .award-year { font-size: 2rem; font-weight: 800; color: var(--gold); margin-bottom: 10px; }
+        .award-card h3 { font-size: 1.3rem; margin-bottom: 10px; }
+        .award-card p { opacity: 0.9; }
+
+        /* ===== SECTION 9: PARTNERS (bg-light-teal) ===== */
+        .partners-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 50px;
+        }
+        .partner-item {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 20px 30px;
+            text-align: center;
+            transition: all 0.3s;
+            min-width: 150px;
+            border: 1px solid #e0e8f0;
+        }
+        .partner-item:hover { transform: translateY(-5px); border-color: var(--gold); }
+        .partner-item img { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin-bottom: 10px; }
+        .partner-item h4 { color: var(--navy); margin-bottom: 5px; }
+        .partner-item p { font-size: 0.85rem; color: var(--gray-text); }
+
+        /* ===== SECTION 10: CTA WITH BG IMAGE (bg-gradient) ===== */
+        .cta-section {
+            background: linear-gradient(135deg, rgba(11,59,94,0.9), rgba(26,109,122,0.9)), url('GS20.webp');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            padding: 80px 0;
+            color: white;
+        }
+        .cta-section h2 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 20px; }
+        .cta-section h2 span { color: var(--gold); }
+        .cta-section p { font-size: 1.2rem; margin-bottom: 40px; opacity: 0.95; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .cta-buttons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .leadership-grid, .impact-stats-grid, .services-grid, .testimonials-grid, .awards-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .timeline-container::before { left: 20px; }
+            .timeline-item, .timeline-item:nth-child(odd), .timeline-item:nth-child(even) { flex-direction: column; margin-left: 40px; }
+            .timeline-content { width: 100%; margin-bottom: 20px; }
+            .timeline-dot { left: 20px; }
+        }
+        @media (max-width: 768px) {
+            section { padding: 60px 0; }
+            .mission-grid { grid-template-columns: 1fr; }
+            .leadership-grid, .impact-stats-grid, .services-grid, .testimonials-grid, .awards-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-stats { gap: 15px; }
+            .hero-stat { padding: 15px; min-width: 130px; }
+            .hero-stat .number { font-size: 1.8rem; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+            .btn { width: 100%; max-width: 280px; }
+            .partners-grid { gap: 15px; }
+            .partner-item { min-width: 130px; padding: 15px; }
+        }
+        @media (max-width: 480px) {
+            .hero-title { font-size: 2rem; }
+            .hero-subtitle { font-size: 1rem; }
+            .hero-stat { min-width: 110px; padding: 10px; }
+            .hero-stat .number { font-size: 1.4rem; }
+            .section-title { font-size: 1.8rem; }
+            .timeline-year { font-size: 1.4rem; }
+            .impact-number { font-size: 2rem; }
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--navy);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+            border: 2px solid var(--gold);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .back-to-top.show { opacity: 1; visibility: visible; }
+        .back-to-top:hover { background: var(--teal); transform: translateY(-5px) scale(1.1); }
+        @media (max-width: 768px) { .back-to-top { bottom: 20px; right: 20px; width: 40px; height: 40px; font-size: 1rem; } }
+
+        /* Loading Spinner */
+        .loading-spinner { display: flex; justify-content: center; align-items: center; min-height: 120px; }
+        .loading-spinner i { font-size: 2rem; color: var(--gold); animation: spin 1s linear infinite; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        
+        html, body { max-width: 100%; overflow-x: hidden; }
+        img { max-width: 100%; height: auto; }
+    </style>
+</head>
+<body>
+
+    <div class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></div>
+
+    <!-- HEADER PLACEHOLDER -->
+    <div id="header-placeholder"><div class="loading-spinner"><i class="fas fa-spinner"></i></div></div>
+
+    <main>
+        <!-- Section 1: Hero with Improved Structure -->
+        <section class="hero-section">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-badge" data-aos="fade-down">🇮🇳 GOVERNMENT OF INDIA</div>
+                    <h1 class="hero-title" data-aos="fade-up">Digital <span>Governance</span><br>for Every Citizen</h1>
+                    <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="100">Transforming India through technology, transparency, and trust</p>
+                    <div class="hero-stats" data-aos="fade-up" data-aos-delay="200">
+                        <div class="hero-stat"><span class="number">500+</span><span class="label">Services</span></div>
+                        <div class="hero-stat"><span class="number">1.4B</span><span class="label">Citizens</span></div>
+                        <div class="hero-stat"><span class="number">33</span><span class="label">Departments</span></div>
+                        <div class="hero-stat"><span class="number">94%</span><span class="label">Satisfaction</span></div>
+                    </div>
+                    <div class="hero-buttons" data-aos="fade-up" data-aos-delay="300">
+                        <a href="404.html" class="btn btn-secondary">Explore Services <i class="fas fa-arrow-right"></i></a>
+                        <a href="404.html" class="btn btn-outline-light">Watch Demo <i class="fas fa-play"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Mission & Vision (bg-white) -->
+        <section class="bg-white">
+            <div class="container">
+                <div class="mission-grid">
+                    <div class="mission-image" data-aos="fade-right">
+                        <img src="GS20.webp" alt="Our Mission">
+                    </div>
+                    <div class="mission-text" data-aos="fade-left">
+                        <h3>Our Mission & Vision</h3>
+                        <p>To create a digitally empowered India where every citizen can access government services seamlessly, transparently, and securely from anywhere, anytime.</p>
+                        <p>We believe in innovation, integrity, and inclusivity as the cornerstones of modern governance. Our commitment is to bridge the gap between citizens and government services through cutting-edge technology.</p>
+                        <a href="404.html" class="btn btn-primary">Discover Our Journey</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: History Timeline (bg-light-teal) -->
+        <section class="bg-light-teal">
+            <div class="container">
+                <div class="text-center" data-aos="fade-down">
+                    <h2 class="section-title">Our <span>Journey</span> Through Time</h2>
+                    <p class="section-desc">Milestones that shaped India's digital governance landscape</p>
+                </div>
+                <div class="timeline-container">
+                    <div class="timeline-item" data-aos="fade-right">
+                        <div class="timeline-content"><div class="timeline-year">1947</div><h3>Independence & Foundation</h3><p>Establishment of the first administrative framework to serve the nation.</p></div>
+                        <div class="timeline-dot"></div>
+                    </div>
+                    <div class="timeline-item" data-aos="fade-left" data-aos-delay="100">
+                        <div class="timeline-content"><div class="timeline-year">2015</div><h3>Digital India Launch</h3><p>Initiated the Digital India program to transform governance.</p></div>
+                        <div class="timeline-dot"></div>
+                    </div>
+                    <div class="timeline-item" data-aos="fade-right" data-aos-delay="200">
+                        <div class="timeline-content"><div class="timeline-year">2019</div><h3>UMANG App Launch</h3><p>Unified mobile app bringing 500+ services to citizens' fingertips.</p></div>
+                        <div class="timeline-dot"></div>
+                    </div>
+                    <div class="timeline-item" data-aos="fade-left" data-aos-delay="300">
+                        <div class="timeline-content"><div class="timeline-year">2024</div><h3>500+ Services Online</h3><p>Achieved milestone of 500+ government services available online.</p></div>
+                        <div class="timeline-dot"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Leadership Team (bg-white) -->
+        <section class="bg-white">
+            <div class="container">
+                <div class="text-center" data-aos="fade-down">
+                    <h2 class="section-title">Our <span>Leadership</span> Team</h2>
+                    <p class="section-desc">Visionaries driving digital transformation</p>
+                </div>
+                <div class="leadership-grid">
+                    <div class="leader-card" data-aos="flip-left"><div class="leader-image"><img src="h29.webp" alt="Leader"></div><div class="leader-info"><h3>Amit Sharma</h3><p>CEO & Director</p><div class="leader-social"><a href="404.html"><i class="fab fa-linkedin-in"></i></a><a href="404.html"><i class="fab fa-twitter"></i></a></div></div></div>
+                    <div class="leader-card" data-aos="flip-left" data-aos-delay="100"><div class="leader-image"><img src="h28.webp" alt="Leader"></div><div class="leader-info"><h3>Priya Patel</h3><p>Chief Technology Officer</p><div class="leader-social"><a href="404.html"><i class="fab fa-linkedin-in"></i></a><a href="404.html"><i class="fab fa-twitter"></i></a></div></div></div>
+                    <div class="leader-card" data-aos="flip-left" data-aos-delay="200"><div class="leader-image"><img src="h27.webp" alt="Leader"></div><div class="leader-info"><h3>Rajesh Kumar</h3><p>Chief Operating Officer</p><div class="leader-social"><a href="404.html"><i class="fab fa-linkedin-in"></i></a><a href="404.html"><i class="fab fa-twitter"></i></a></div></div></div>
+                    <div class="leader-card" data-aos="flip-left" data-aos-delay="300"><div class="leader-image"><img src="h29.webp" alt="Leader"></div><div class="leader-info"><h3>Anita Desai</h3><p>Chief Marketing Officer</p><div class="leader-social"><a href="404.html"><i class="fab fa-linkedin-in"></i></a><a href="404.html"><i class="fab fa-twitter"></i></a></div></div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Impact Stats with Images (bg-light-teal) -->
+        <section class="bg-light-teal">
+            <div class="container">
+                <div class="text-center" data-aos="fade-down">
+                    <h2 class="section-title">Our <span>Impact</span> in Numbers</h2>
+                    <p class="section-desc">Measurable outcomes from our digital initiatives</p>
+                </div>
+                <div class="impact-stats-grid">
+                    <div class="impact-stat-card" data-aos="zoom-in"><div class="impact-icon"><img src="GS18.webp" alt="Citizens"></div><div class="impact-number">1.4B</div><div class="impact-label">Citizens Served</div><div class="impact-desc">100% population reach</div></div>
+                    <div class="impact-stat-card" data-aos="zoom-in" data-aos-delay="100"><div class="impact-icon"><img src="GS17.webp" alt="Transactions"></div><div class="impact-number">50B+</div><div class="impact-label">Digital Transactions</div><div class="impact-desc">Annual volume</div></div>
+                    <div class="impact-stat-card" data-aos="zoom-in" data-aos-delay="200"><div class="impact-icon"><img src="GS16.webp" alt="Savings"></div><div class="impact-number">₹2.5L Cr</div><div class="impact-label">Citizen Savings</div><div class="impact-desc">Through digitization</div></div>
+                    <div class="impact-stat-card" data-aos="zoom-in" data-aos-delay="300"><div class="impact-icon"><img src="GS15.webp" alt="Time"></div><div class="impact-number">85%</div><div class="impact-label">Time Reduction</div><div class="impact-desc">In service delivery</div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: Key Services (bg-white) -->
+        <section class="bg-white">
+            <div class="container">
+                <div class="text-center" data-aos="fade-down">
+                    <h2 class="section-title">Our Key <span>Services</span></h2>
+                    <p class="section-desc">Comprehensive digital services for every citizen</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card" data-aos="fade-up"><div class="service-icon"><img src="Aadhaar.webp" alt="Aadhaar"></div><h3>Aadhaar Services</h3><p>Update, download, and verify Aadhaar online instantly.</p><a href="404.html" class="btn btn-outline">Learn More</a></div>
+                    <div class="service-card" data-aos="fade-up" data-aos-delay="100"><div class="service-icon"><img src="Passport.webp" alt="Passport"></div><h3>Passport Services</h3><p>Apply for new passport, renew existing, track status.</p><a href="404.html" class="btn btn-outline">Learn More</a></div>
+                    <div class="service-card" data-aos="fade-up" data-aos-delay="200"><div class="service-icon"><img src="Driving.webp" alt="Driving"></div><h3>Driving License</h3><p>Apply for learner's license, permanent license, renewals.</p><a href="404.html" class="btn btn-outline">Learn More</a></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 7: Testimonials (bg-light-teal) -->
+        <section class="bg-light-teal">
+            <div class="container">
+                <div class="text-center" data-aos="fade-down">
+                    <h2 class="section-title">What <span>Citizens</span> Say</h2>
+                    <p class="section-desc">Real experiences from millions of satisfied users</p>
+                </div>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card" data-aos="flip-up"><div class="testimonial-avatar"><img src="h27.webp" alt="User"></div><div class="testimonial-rating">★★★★★</div><p class="testimonial-text">"Got my passport in just 3 days! The online process was smooth and hassle-free."</p><div class="testimonial-name">Rahul Mehta</div><p>Mumbai</p></div>
+                    <div class="testimonial-card" data-aos="flip-up" data-aos-delay="100"><div class="testimonial-avatar"><img src="h28.webp" alt="User"></div><div class="testimonial-rating">★★★★★</div><p class="testimonial-text">"Property registration was so simple. Did everything from home."</p><div class="testimonial-name">Sunita Reddy</div><p>Hyderabad</p></div>
+                    <div class="testimonial-card" data-aos="flip-up" data-aos-delay="200"><div class="testimonial-avatar"><img src="h29.webp" alt="User"></div><div class="testimonial-rating">★★★★★</div><p class="testimonial-text">"Digital India has truly transformed how we interact with government services."</p><div class="testimonial-name">Arjun Singh</div><p>Delhi</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 8: Awards (bg-white) -->
+        <section class="bg-white">
+            <div class="container">
+                <div class="text-center" data-aos="fade-down">
+                    <h2 class="section-title">Awards & <span>Recognition</span></h2>
+                    <p class="section-desc">National and international accolades</p>
+                </div>
+                <div class="awards-grid">
+                    <div class="award-card" data-aos="flip-left"><div class="award-icon"><i class="fas fa-trophy"></i></div><div class="award-year">2024</div><h3>Best E-Governance</h3><p>National Award for Digital Excellence</p></div>
+                    <div class="award-card" data-aos="flip-left" data-aos-delay="100"><div class="award-icon"><i class="fas fa-medal"></i></div><div class="award-year">2023</div><h3>Innovation Award</h3><p>For AI-Powered Service Delivery</p></div>
+                    <div class="award-card" data-aos="flip-left" data-aos-delay="200"><div class="award-icon"><i class="fas fa-star"></i></div><div class="award-year">2022</div><h3>Citizen's Choice</h3><p>Most User-Friendly Portal</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 9: Partners (bg-light-teal) -->
+        <section class="bg-light-teal">
+            <div class="container">
+                <div class="text-center" data-aos="fade-down">
+                    <h2 class="section-title">Our Trusted <span>Partners</span></h2>
+                    <p class="section-desc">Collaborating with industry leaders</p>
+                </div>
+                <div class="partners-grid">
+                    <div class="partner-item" data-aos="zoom-in"><img src="GS10.webp" alt="Microsoft"><h4>Microsoft</h4><p>Technology Partner</p></div>
+                    <div class="partner-item" data-aos="zoom-in" data-aos-delay="100"><img src="GS11.webp" alt="Google"><h4>Google</h4><p>Cloud Partner</p></div>
+                    <div class="partner-item" data-aos="zoom-in" data-aos-delay="200"><img src="GS12.webp" alt="Amazon"><h4>Amazon</h4><p>AWS Partner</p></div>
+                    <div class="partner-item" data-aos="zoom-in" data-aos-delay="300"><img src="GS13.webp" alt="IBM"><h4>IBM</h4><p>AI Partner</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 10: CTA with Background Image (bg-gradient) -->
+        <section class="cta-section">
+            <div class="container">
+                <h2 data-aos="fade-down">Ready to Get <span>Started?</span></h2>
+                <p data-aos="fade-up">Join millions of citizens already using our services</p>
+                <div class="cta-buttons" data-aos="fade-up" data-aos-delay="200">
+                    <a href="404.html" class="btn btn-secondary">Register Now</a>
+                    <a href="404.html" class="btn btn-outline-light">Learn More</a>
+                    <a href="404.html" class="btn btn-outline-light">Contact Support</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER PLACEHOLDER -->
+    <div id="footer-placeholder"><div class="loading-spinner"><i class="fas fa-spinner"></i></div></div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: false, offset: 100, easing: 'ease-in-out', mirror: true });
+
+        // Back to Top
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => { backToTop.classList.toggle('show', window.scrollY > 500); });
+        backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        // Header/Footer Loader
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('header1.html')
+                .then(response => response.ok ? response.text() : Promise.reject())
+                .then(data => { document.getElementById('header-placeholder').innerHTML = data; setTimeout(initHeaderInteractions, 100); })
+                .catch(() => { document.getElementById('header-placeholder').innerHTML = '<header style="background:#0B3B5E;color:white;padding:20px;text-align:center">⚠️ Header Not Found</header>'; });
+            fetch('footer1.html')
+                .then(response => response.ok ? response.text() : Promise.reject())
+                .then(data => { document.getElementById('footer-placeholder').innerHTML = data; })
+                .catch(() => { document.getElementById('footer-placeholder').innerHTML = '<footer style="background:#0B3B5E;color:white;padding:40px;text-align:center">⚠️ Footer Not Found</footer>'; });
+        });
+
+        function initHeaderInteractions() {
+            const menuToggle = document.getElementById('menuToggle'), navMenu = document.getElementById('navMenu'), logo = document.querySelector('.logo');
+            if (menuToggle && navMenu) menuToggle.addEventListener('click', function(e) { e.preventDefault(); this.classList.toggle('active'); navMenu.classList.toggle('active'); if (logo) { if (navMenu.classList.contains('active')) { logo.style.opacity = '0'; logo.style.visibility = 'hidden'; logo.style.pointerEvents = 'none'; document.body.style.overflow = 'hidden'; } else { logo.style.opacity = '1'; logo.style.visibility = 'visible'; logo.style.pointerEvents = 'auto'; document.body.style.overflow = 'auto'; } } });
+            document.querySelectorAll('[data-dropdown]').forEach(btn => { const dropdownId = btn.getAttribute('data-dropdown'), dropdown = document.getElementById(dropdownId); if (dropdown) btn.addEventListener('click', function(e) { e.preventDefault(); e.stopPropagation(); document.querySelectorAll('[data-dropdown]').forEach(other => { if (other !== btn) { const otherId = other.getAttribute('data-dropdown'), otherDropdown = document.getElementById(otherId); if (otherDropdown) { otherDropdown.classList.remove('show'); other.classList.remove('active'); } } }); dropdown.classList.toggle('show'); this.classList.toggle('active'); }); });
+            document.addEventListener('click', e => { if (!e.target.closest('[data-dropdown]') && !e.target.closest('.dropdown-menu')) { document.querySelectorAll('.dropdown-menu').forEach(d => d.classList.remove('show')); document.querySelectorAll('[data-dropdown]').forEach(btn => btn.classList.remove('active')); } });
+        }
+
+        window.addEventListener('load', () => AOS.refresh());
+        window.addEventListener('resize', () => AOS.refresh());
+    </script>
+</body>
+</html>

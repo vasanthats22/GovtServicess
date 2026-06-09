@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Government Services Portal</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Professional Government Color Palette */
+    :root {
+      --navy: #0B3B5E;
+      --teal: #1A6D7A;
+      --gold: #D4AF37;
+      --white: #ffffff;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--teal) 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      padding: 1rem;
+    }
+
+    /* Main container */
+    .loader-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      max-width: 400px;
+      width: 100%;
+      animation: fadeIn 0.6s ease-out;
+    }
+
+    /* Logo */
+    .logo-wrapper {
+      margin-bottom: 2rem;
+    }
+
+    .logo-circle {
+      width: 120px;
+      height: 120px;
+      background: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+      border: 2px solid var(--gold);
+      transition: transform 0.3s ease;
+    }
+
+    .logo-circle img {
+      width: 80%;
+      height: 80%;
+      object-fit: contain;
+      border-radius: 50%;
+    }
+
+    /* Title */
+    .title {
+      color: var(--white);
+      font-size: 1.1rem;
+      font-weight: 500;
+      letter-spacing: 2px;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+    }
+
+    .subtitle {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.8rem;
+      font-weight: 400;
+      margin-bottom: 2rem;
+    }
+
+    /* Elegant progress bar */
+    .progress-wrapper {
+      width: 100%;
+      max-width: 280px;
+      margin: 1.5rem auto;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      width: 0%;
+      height: 100%;
+      background: var(--gold);
+      border-radius: 2px;
+      transition: width 0.1s linear;
+    }
+
+    .progress-text {
+      text-align: center;
+      margin-top: 0.75rem;
+      color: var(--gold);
+      font-size: 0.85rem;
+      font-weight: 500;
+      font-family: monospace;
+      letter-spacing: 1px;
+    }
+
+    /* Simple animated dots */
+    .dots {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-top: 1.5rem;
+    }
+
+    .dots span {
+      width: 6px;
+      height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+      opacity: 0.4;
+      animation: pulse 1.4s ease-in-out infinite;
+    }
+
+    .dots span:nth-child(1) { animation-delay: 0s; }
+    .dots span:nth-child(2) { animation-delay: 0.2s; }
+    .dots span:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.3; transform: scale(0.8); }
+      50% { opacity: 1; transform: scale(1.2); }
+    }
+
+    /* Footer text */
+    .footer {
+      margin-top: 2rem;
+      font-size: 0.65rem;
+      color: rgba(255, 255, 255, 0.4);
+      letter-spacing: 1px;
+    }
+
+    .footer i {
+      color: var(--gold);
+      margin: 0 4px;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.98);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* Simple logo hover */
+    .logo-circle:hover {
+      transform: scale(1.02);
+    }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      .logo-circle {
+        width: 90px;
+        height: 90px;
+      }
+      
+      .title {
+        font-size: 0.9rem;
+      }
+      
+      .subtitle {
+        font-size: 0.7rem;
+      }
+      
+      .progress-wrapper {
+        max-width: 220px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="loader-container">
+    <!-- Logo -->
+    <div class="logo-wrapper">
+      <div class="logo-circle">
+        <img src="Stackly.webp" alt="Government Services Portal" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'100\' viewBox=\'0 0 100 100\'%3E%3Ccircle cx=\'50\' cy=\'50\' r=\'48\' fill=\'%230B3B5E\' stroke=\'%23D4AF37\' stroke-width=\'2\'/%3E%3Ctext x=\'50\' y=\'62\' font-size=\'16\' text-anchor=\'middle\' fill=\'%23D4AF37\' font-weight=\'bold\'%3EGOV%3C/text%3E%3C/svg%3E'">
+      </div>
+    </div>
+
+    <!-- Text -->
+    <div class="title">GOVERNMENT SERVICES PORTAL</div>
+    <div class="subtitle">Digital India · e-Governance</div>
+
+    <!-- Progress Bar -->
+    <div class="progress-wrapper">
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <div class="progress-text" id="progressPercent">0%</div>
+    </div>
+
+    <!-- Animated Dots -->
+    <div class="dots">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <i class="fas fa-shield-alt"></i> Secure Connection <i class="fas fa-lock"></i>
+    </div>
+  </div>
+
+  <!-- Font Awesome (minimal) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script>
+    // Simple progress animation
+    let progress = 0;
+    const progressFill = document.getElementById('progressFill');
+    const progressPercent = document.getElementById('progressPercent');
+    
+    const interval = setInterval(function() {
+      if (progress < 100) {
+        // Smooth increment - faster at start, slower near end
+        let increment;
+        if (progress < 30) increment = Math.floor(Math.random() * 8) + 5;
+        else if (progress < 70) increment = Math.floor(Math.random() * 6) + 3;
+        else increment = Math.floor(Math.random() * 3) + 1;
+        
+        progress = Math.min(progress + increment, 100);
+        progressFill.style.width = progress + '%';
+        progressPercent.textContent = progress + '%';
+      }
+      
+      if (progress === 100) {
+        clearInterval(interval);
+        // Brief pause then redirect
+        setTimeout(function() {
+          window.location.href = 'home1.html';
+        }, 300);
+      }
+    }, 70);
+  </script>
+</body>
+</html>
